@@ -60,7 +60,7 @@ export default {
         password
       } = this;
       if(account && password) {
-        console.log(account, password)
+        return 0;
       }
     },
     onSignIn() {
@@ -69,7 +69,8 @@ export default {
         password
       } = this;
       if(account && password) {
-        console.log(account, password)
+        return 0;
+        // console.log(account, password)
       }
     },
     goBack() {
