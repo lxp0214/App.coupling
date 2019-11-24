@@ -1,59 +1,55 @@
 <template>
-  <div v-if="title == '广场区'">
+  <div v-if="acts">
       <div
-        v-for="(item,i) in items"
+        v-for="(act,i) in acts"
         :key="i"
       >
           <activity-card 
-            :name="item.name"
-          />
-      </div>
-  </div>
-  <div v-else-if="title == '评论区'">
-      <div
-        v-for="(item,i) in items"
-        :key="i"
-      >
-          <comment-item
-            :name="item.name"
-          />
-      </div>
-  </div>
-  <div v-else-if="title == '已发布'">
-      <div
-        v-for="(item,i) in items"
-        :key="i"
-      >
-          <activity-card 
-            :name="item.name"
+            :title="act.title"
+            :subtitle="act.description"
+            :author="act.author"
+            :date="act.date"
+            :location="act.location"
           />
       </div>
   </div>
 </template>
 
 <script>
+import tabName from '../../constants/tabName';
 import ActivityCard from './ActivityCard.vue';
-import CommentItem from './CommentItem.vue';
-
+import axios from 'axios';
 
 export default {
   name: 'tab-content',
   components: {
     ActivityCard,
-    CommentItem
   },
   props: {
     title: String
   },
-  data: function() {return ({
-    items: [
-      { name: this.$props.title },
-      { name: this.$props.title },
-      { name: this.$props.title },
-      { name: this.$props.title },
-      { name: this.$props.title },
-      { name: this.$props.title },
-    ]
-  }) }
+  data: function() {
+    return ({
+      acts: null,
+      items: [
+        { name: this.$props.title },
+        { name: this.$props.title },
+        { name: this.$props.title },
+        { name: this.$props.title },
+        { name: this.$props.title },
+        { name: this.$props.title },
+      ]
+    }) 
+  },
+  mounted() {
+    if(this.title === tabName.playground)
+    axios.get('api/acts')
+    .then(res => {
+      const { data: { acts } } = res;
+      console.log(acts)
+      this.acts = acts;
+    })
+  }
+  
 }
 </script>

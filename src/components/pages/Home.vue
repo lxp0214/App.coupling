@@ -15,7 +15,12 @@
         </v-img>
         <div class="avatar" @click="onAvatar">
           <v-avatar color="primary" size="64">
-            <span class="white--text">{{ name }}</span>
+            <v-img
+              v-if="user && user.avatar"
+              :src="user.avatar"
+            >
+            </v-img>
+            <span v-else class="white--text">{{ name }}</span>
           </v-avatar>
         </div>
       </v-card>
@@ -73,11 +78,20 @@
 import tabName from '../../constants/tabName';
 import DrawerItems from '../layout/DrawerItems.vue';
 import TabContent from '../layout/TabContent.vue';
-
+import axios from 'axios';
 export default {
   components:{
     DrawerItems,
     TabContent,
+  },
+  mounted() {
+    axios.get('api/user')
+    .then(res => {
+      const { data: { user } } = res;
+      console.log(user)
+      this.user = user;
+    })
+   
   },
   data: () => ({
     drawer: false,
@@ -88,7 +102,8 @@ export default {
     ],
     name: 'NMSL',
     currentTab: 'tab-0',
-    fab: true
+    fab: true,
+    user: null,
   }),
   methods: {
     onAvatar() {

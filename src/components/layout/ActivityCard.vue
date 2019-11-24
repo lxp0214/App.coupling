@@ -4,26 +4,29 @@
   >
       <v-list-item>
         <v-list-item-avatar color="primary">
-          <span class="white--text">{{ name.slice(0,4) }}</span>
+          <v-img
+            v-if="author && author.avatar"
+            :src="author.avatar"
+          />
         </v-list-item-avatar>
-        <v-list-item-content>
-          <v-list-item-title >发布者</v-list-item-title>
-          <v-list-item-subtitle>发布日期</v-list-item-subtitle>
+        <v-list-item-content v-if="author">
+          <v-list-item-title> {{ author.name }} </v-list-item-title>
+          <v-list-item-subtitle> {{ author.date }} </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>
-            活动名称
+          <v-list-item-title v-if="title">
+            {{ title }}
           </v-list-item-title>
-          <v-list-item-subtitle>
-            活动详情
+          <v-list-item-subtitle v-if="subtitle">
+            {{ subtitle }}
           </v-list-item-subtitle>
-          <v-list-item-subtitle>
-            活动地点
+          <v-list-item-subtitle v-if="location">
+            {{ location }}
           </v-list-item-subtitle>
-          <v-list-item-subtitle>
-            活动日期
+          <v-list-item-subtitle v-if="date">
+            {{ date }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -35,13 +38,11 @@
 export default {
   name:'activity-card',
   props: {
-    name: String,
-    creator: {
-      name: String,
-      publishTime: String
-    },
+    title: String,
+    subtitle: String,
+    author: Object,
+    date: String,
     location: String,
-    number: Number,
   }
 }
 </script>
