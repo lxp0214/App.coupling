@@ -8,9 +8,21 @@ import Publish from './components/pages/Publish.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/login', component: Login },
-  { path: '/publish', component: Publish }
+  { 
+    path: '/', 
+    component: Home,
+    meta: {
+      keepAlive: true
+    }  
+  },
+  { 
+    path: '/login',
+    component: Login 
+  },
+  { 
+    path: '/publish', 
+    component: Publish 
+  }
 ]
 
 const router = new VueRouter({
