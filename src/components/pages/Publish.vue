@@ -31,43 +31,58 @@
             label="人数"
             single-line
           />
-          <v-text-field
-            label="日期"
-            single-line
-          />
           <v-layout>
+            <v-dialog
+              ref="dialog"
+              v-model="modal"
+              :return-value.sync="date"
+            >
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="date"
+                  label="日期"
+                  readonly
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker 
+                  v-model="date"
+                  scrollable 
+                  range
+                  :min="today"
+                  locale="zh"
+                >
+                <v-spacer></v-spacer>
+                <v-btn text color="primary" @click="modal = false">取消</v-btn>
+                <v-btn text color="primary" @click="$refs.dialog.save(date)">确认</v-btn>
+              </v-date-picker>
+            </v-dialog>
+          </v-layout>
+          <v-layout class="mt-3">
             <v-spacer />
             <v-btn
               dark
               fab
               color="primary"
-              @click="onPublish"
             >
               <v-icon>mdi-check</v-icon>
             </v-btn>
             <v-spacer />
           </v-layout>
         </v-card-text>
-        
-        <my-dialog 
-          :show="showDialog"
-          title="是否确认提交？"
-        />
       </v-container>
     </v-content>
    </v-col>
 </template>
 
 <script>
-import MyDialog from '../layout/MyDialog.vue'
-
 export default {
   name:'publish',
-  components: {
-    MyDialog
-  },
   data: () => ({
-    showDialog: false
+    showDialog: false,
+    date: [],
+    modal: false,
+    today: new Date().toISOString().substr(0, 10)
   }),
   methods: {
     goBack() {
@@ -76,12 +91,11 @@ export default {
     onPublish() {
       this.showDialog = true
     }
+  },
+  watch: {
+   date(val) {
+     console.log(val)
+   }
   }
 }
 </script>
-
-<style scoped>
-.btn-container {
-  width: 100%;
-}
-</style>
