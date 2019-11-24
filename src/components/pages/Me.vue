@@ -19,11 +19,21 @@
           justify="center"
         >
           <v-avatar color="orange" size="62">
-            <span class="white--text headline">62</span>
+            
           </v-avatar>
           <v-card-text>
-            name
+            爱好
           </v-card-text>
+          <v-card-text>
+           性格
+          </v-card-text>
+          <v-card-text>
+            空闲时间
+          </v-card-text>
+          <v-card-text>
+            个性签名
+          </v-card-text>
+
         </v-row>
       </v-container>
     </v-content>
