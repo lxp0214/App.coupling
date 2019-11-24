@@ -70,6 +70,7 @@
   </v-app>
 </template>
 <script>
+import tabName from '../../constants/tabName';
 import DrawerItems from '../layout/DrawerItems.vue';
 import TabContent from '../layout/TabContent.vue';
 
@@ -81,9 +82,9 @@ export default {
   data: () => ({
     drawer: false,
     tabs: [
-      { title: '广场区', index: 0 },
-      { title: '评论区', index:1 },
-      { title: '已发布', index:2 }
+      { title: tabName.playground, index: 0 },
+      { title: tabName.comments, index:1 },
+      { title: tabName.published, index:2 }
     ],
     name: 'NMSL',
     currentTab: 'tab-0',
