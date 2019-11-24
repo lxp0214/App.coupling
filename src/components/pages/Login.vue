@@ -6,7 +6,7 @@
       <v-btn text icon @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-text color="primary">登录</v-toolbar-text>
+      <span color="primary">登录</span>
       <v-spacer />
     </v-app-bar>
     <v-content>

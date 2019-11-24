@@ -6,7 +6,7 @@
       <v-btn text icon @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <v-toolbar-text color="primary text-center">发布</v-toolbar-text>
+      <span color="primary text-center">发布</span>
       <v-spacer />
     </v-app-bar>
     <v-content>
