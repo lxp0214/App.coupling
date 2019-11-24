@@ -1,0 +1,29 @@
+{ 
+  "user":{
+    "code": 200,
+    "user":{
+        "userid": "@id()",
+        "username": "@cname()",
+        "date": "@date()",
+        "avatar": "@image('200x200','#FCA540','#fff','avatar')",
+        "description": "@cparagraph()",
+        "email": "@email()"
+    }
+  },
+  "acts": {
+    "code": 200,
+    "acts|10-20": [
+      { 
+        "title": "@ctitle()",
+        "author":{
+          "name": "@cname()",
+          "date": "@date()",
+          "avatar": "@image('200x200','#FCA540','#fff','avatar')"
+        },
+        "date": "@date()",
+        "description":"@cparagraph()",
+        "location": "@county(true)"
+      }
+    ]
+  }
+}
