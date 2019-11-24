@@ -92,10 +92,5 @@ export default {
       this.showDialog = true
     }
   },
-  watch: {
-   date(val) {
-     console.log(val)
-   }
-  }
 }
 </script>

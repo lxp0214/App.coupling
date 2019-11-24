@@ -18,11 +18,42 @@
         "author":{
           "name": "@cname()",
           "date": "@date()",
-          "avatar": "@image('200x200','#FCA540','#fff','avatar')"
+          "avatar": "@image('200x200','#FCA540','#fff', 'avatar')"
         },
         "date": "@date()",
         "description":"@cparagraph()",
         "location": "@county(true)"
+      }
+    ]
+  },
+  "comments": {
+    "code": 200,
+    "comments|10-20": [
+      { 
+        "title": "@ctitle()",
+        "author":{
+          "name": "@cname()",
+          "date": "@date()",
+          "avatar": "@image('200x200','#FCA540','#fff', 'avatar')"
+        },
+        "date": "@date()",
+        "description":"@cparagraph()"
+      }
+    ]
+  },
+  "publisheds": {
+    "code": 200,
+    "publisheds|10-20": [
+      { 
+        "title": "@ctitle()",
+        "author":{
+          "name": "@cname()",
+          "date": "@date()",
+          "avatar": "@image('200x200','#FCA540','#fff', 'avatar')"
+        },
+        "date": "@date()",
+        "description":"@cparagraph()",
+        "done|1-2": true
       }
     ]
   }

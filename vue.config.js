@@ -11,12 +11,13 @@ module.exports = {
       app.get("/api/acts", (_, res) => {
         res.json(Mock.mock(mockIndexData.acts));
       });
-      // app.get("/api/acts", (req, res) => {
-      //   res.json(mockIndexData);
-      // });
-      // app.get("/api/comments", (req, res) => {
-      //   res.json(mockIndexData);
-      // });
+      app.get("/api/comments", (_, res) => {
+        res.json(Mock.mock(mockIndexData.comments));
+      });
+      app.get("/api/publisheds", (_, res) => {
+        res.json(Mock.mock(mockIndexData.publisheds));
+      });
+
     }
   }
 };

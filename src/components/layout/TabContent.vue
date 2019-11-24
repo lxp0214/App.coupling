@@ -13,12 +13,39 @@
           />
       </div>
   </div>
+  <div v-else-if="comments">
+      <div
+        v-for="(comment,i) in comments"
+        :key="i"
+      >
+          <activity-card 
+            :title="comment.title"
+            :subtitle="comment.description"
+            :author="comment.author"
+            :date="comment.date"
+            :location="comment.location"
+          />
+      </div>
+  </div>
+  <div v-else-if="publisheds">
+      <div
+        v-for="(published,i) in publisheds"
+        :key="i"
+      >
+          <activity-card 
+            :title="published.title"
+            :subtitle="published.description"
+            :author="published.author"
+            :date="published.date"
+            :location="published.location"
+            :done="published.done"
+          />
+      </div>
+  </div>
 </template>
 
 <script>
-import tabName from '../../constants/tabName';
 import ActivityCard from './ActivityCard.vue';
-import axios from 'axios';
 
 export default {
   name: 'tab-content',
@@ -26,30 +53,10 @@ export default {
     ActivityCard,
   },
   props: {
-    title: String
+    acts: Array,
+    comments: Array,
+    publisheds: Array
   },
-  data: function() {
-    return ({
-      acts: null,
-      items: [
-        { name: this.$props.title },
-        { name: this.$props.title },
-        { name: this.$props.title },
-        { name: this.$props.title },
-        { name: this.$props.title },
-        { name: this.$props.title },
-      ]
-    }) 
-  },
-  mounted() {
-    if(this.title === tabName.playground)
-    axios.get('api/acts')
-    .then(res => {
-      const { data: { acts } } = res;
-      console.log(acts)
-      this.acts = acts;
-    })
-  }
   
 }
 </script>

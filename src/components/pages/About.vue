@@ -6,7 +6,7 @@
       <v-btn text icon @click="$router.go(-1)">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <span>我的</span>
+      <span>关于</span>
     </v-app-bar>
     <v-content
       app
@@ -18,11 +18,8 @@
           align="center"
           justify="center"
         >
-          <v-avatar color="orange" size="62">
-            <span class="white--text headline">62</span>
-          </v-avatar>
           <v-card-text>
-            name
+            
           </v-card-text>
         </v-row>
       </v-container>

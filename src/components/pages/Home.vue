@@ -49,14 +49,22 @@
         </v-tab>
       </v-tabs>
     </v-app-bar>
-    <v-container>
+    <v-container >
       <v-tabs-items v-model="currentTab">
-        <v-tab-item
-          v-for="tab in tabs"
-          :key="tab.index"
-          :value="`tab-${tab.index}`"
-        >
-          <tab-content :title="tab.title" :currentTab="currentTab" />
+        <v-tab-item value="tab-0">
+          <tab-content
+            :acts="acts"
+          />
+        </v-tab-item>
+        <v-tab-item value="tab-1">
+          <tab-content
+            :comments="comments"
+          />
+        </v-tab-item>
+        <v-tab-item value="tab-2">
+          <tab-content
+            :publisheds="publisheds"
+          />
         </v-tab-item>
       </v-tabs-items>
       <div
@@ -88,8 +96,12 @@ export default {
     axios.get('api/user')
     .then(res => {
       const { data: { user } } = res;
-      console.log(user)
       this.user = user;
+    })
+    axios.get('api/acts')
+    .then(res => {
+      const { data: { acts } } = res;
+      this.acts = acts
     })
    
   },
@@ -104,15 +116,36 @@ export default {
     currentTab: 'tab-0',
     fab: true,
     user: null,
+    acts: null,
+    comments: null,
+    publisheds: null
   }),
   methods: {
     onAvatar() {
-      this.$router.push({ path: 'login'})
+      this.$router.push({ path: 'me' })
     },
     onPublish() {
       this.$router.push({ path: 'publish' })
     }
   },
+  watch: {
+    currentTab(val) {
+      if(val === 'tab-1' && !this.comments) {
+        axios.get('api/comments')
+        .then(res => {
+          const { data: { comments }} = res;
+          this.comments = comments
+        })
+      }
+      else if(val === 'tab-2' && !this.published) {
+        axios.get('api/publisheds')
+        .then(res => {
+          const { data: { publisheds }} = res;
+          this.publisheds = publisheds
+        })
+      }
+    }
+  }
 }
 </script>
 

@@ -4,6 +4,8 @@ import VueRouter from 'vue-router'
 import Login from './components/pages/Login.vue';
 import Home from './components/pages/Home.vue';
 import Publish from './components/pages/Publish.vue';
+import Me from './components/pages/Me.vue';
+import About from './components/pages/About.vue';
 
 Vue.use(VueRouter);
 
@@ -22,6 +24,14 @@ const routes = [
   { 
     path: '/publish', 
     component: Publish 
+  },
+  {
+    path: '/me',
+    component: Me
+  },
+  {
+    path: '/about',
+    component: About
   }
 ]
 

@@ -3,7 +3,7 @@
   <v-content>
     <v-container fluid>
       <keep-alive>
-          <router-view v-if="$route.meta.keepAlive" />
+        <router-view v-if="$route.meta.keepAlive" />
       </keep-alive>
       <router-view v-if="!$route.meta.keepAlive" />
     </v-container>

@@ -70,7 +70,6 @@ export default {
       } = this;
       if(account && password) {
         return 0;
-        // console.log(account, password)
       }
     },
     goBack() {

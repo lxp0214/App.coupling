@@ -1,5 +1,6 @@
 <template>
   <v-card
+    :disabled="done === undefined || done"
     class="mx-auto mb-5"
   >
       <v-list-item>
@@ -43,6 +44,7 @@ export default {
     author: Object,
     date: String,
     location: String,
+    done: Boolean
   }
 }
 </script>
